@@ -1,7 +1,11 @@
-from telegram import Bot
-from config import BOT_TOKEN
+import time
+import requests
 
-bot = Bot(token=BOT_TOKEN)
+TOKEN = "8135553631:AAEez0VrglZoZSiXDV1QrhWUfGnXOLcocWs"
+CHAT_ID = "7671074142"
 
-def send_telegram_message(chat_id, message):
-    bot.send_message(chat_id=chat_id, text=message)
+def send_telegram_signal(message):
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    payload = {"chat_id": CHAT_ID, "text": message}
+    requests.post(url, data=payload)
+    
